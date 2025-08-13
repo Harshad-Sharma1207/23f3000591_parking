@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h2>Welcome, {{ current_user.username }}!</h2>
+<h5>Balance: ₹{{ current_user.balance }}</h5>
+
+
+<h4>Choose a Parking Lot</h4>
+
+<div class="row">
+  {% for lot in lots %}
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ lot.name }}</h5>
+
+            <p class="card-text">
+              Address: {{ lot.address }}<br>
+              Pincode: {{ lot.pincode }}<br>
+              Price: ₹{{ lot.price }}/hour <br>
+              Available Spots:
+              {% set available = lot.spots | selectattr("status", "equalto", "A") | list | length %}
+              {% if available == 0 %}
+                <span style="color: red;">FULL</span>
+              {% else %}
+                {{ available }}/{{ lot.max_spots }}
+              {% endif %}
+            </p>
+
+
+          <!-- Reserve Button -->
+          <button class="btn btn-primary" onclick="toggleForm('{{ lot.id }}')">Reserve</button>
+
+          <!-- Hidden Form -->
+          <form method="POST" action="{{ url_for('user.reserve_spot_in_lot', lot_id=lot.id) }}" id="form-{{ lot.id }}" style="display: none; margin-top: 10px;">
+            <input type="text" name="name" class="form-control mt-2" placeholder="Your Name" required>
+            <input type="text" name="vehicle_type" class="form-control mt-2" placeholder="Vehicle Type" required>
+            <input type="text" name="vehicle_number" class="form-control mt-2" placeholder="Vehicle Number" required>
+            <input type="text" name="contact" class="form-control mt-2" placeholder="Contact Number" required>
+            <button type="submit" class="btn btn-success mt-2">Confirm Reservation</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+</div>
+
+
+
+<a id="rlms" href="{{ url_for('user.show_release_options') }}" class="btn btn-danger mt-2">Release My Spot</a>
+
+<a id="vps" href="{{ url_for('user.parking_summary') }}" class="btn btn-info mt-2">View Parking Summary</a>
+<a id="mma" href="{{ url_for('user.account') }}" class="btn btn-warning mt-2">Manage My Account</a>
+
+<hr>
+
+<h4 class="mt-4">Recent Parking History</h4>
+{% if reservations %}
+
+<hr>
+<h4>Total Spending on Parking: ₹{{ total_cost }}</h4>
+
+<form method="POST" action="{{ url_for('user.delete_history') }}">
+    <button id="dprh" type="submit" class="btn btn-danger btn-sm mt-2">Delete Past Reservation History</button>
+</form>
+
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Lot</th>
+            <th>Spot ID</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in reservations %}
+        <tr>
+            <td>
+                {% if r.spot and r.spot.lot %}
+                    {{ r.spot.lot.name }}
+                {% else %}
+                    Unknown Lot
+                {% endif %}
+            </td>
+            <td>
+                {% if r.spot %}
+                    {{ r.spot.id }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>{{ r.parking_time }}</td>
+            <td>{{ r.leaving_time or 'Ongoing' }}</td>
+            <td>
+                {% if r.cost is not none %}
+                    ₹{{ r.cost }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% else %}
+    <p>No reservation history found.</p>
+{% endif %}
+
+<script>
+  function toggleForm(lotId) {
+    const form = document.getElementById(`form-${lotId}`);
+    if (form.style.display === "none" || form.style.display === "") {
+      form.style.display = "block";
+    } else {
+      form.style.display = "none";
+    }
+  }
+</script>
+
+
+{% endblock %}

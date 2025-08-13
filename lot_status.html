@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Status of {{ lot.name }}</h2>
+<table class="table">
+    <thead><tr><th>Spot ID</th><th>Status</th></tr></thead>
+    <tbody>
+        {% for spot in spots %}
+        <tr>
+            <td>{{ spot.id }}</td>
+            <td>{% if spot.status == 'A' %}Available{% else %}Occupied{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a id="btd" href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

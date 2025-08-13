@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create Parking Lot</h2>
+<form method="POST">
+    <input class="form-control mb-2" type="text" name="name" placeholder="Lot Name" required>
+    <input class="form-control mb-2" type="text" name="address" placeholder="Address" required>
+    <input class="form-control mb-2" type="text" name="pincode" placeholder="Pincode" required>
+    <input class="form-control mb-2" type="number" name="price" placeholder="Price per hour" required>
+    <input class="form-control mb-2" type="number" name="max_spots" placeholder="Number of Spots" required>
+    <button class="btn btn-success" type="submit">Create</button>
+</form>
+
+{% endblock %}

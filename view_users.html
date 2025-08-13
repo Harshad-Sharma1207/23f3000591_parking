@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>All Registered Users</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ 'Admin' if user.is_admin else 'User' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a id="btd" href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

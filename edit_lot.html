@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Parking Lot</h2>
+<form method="POST">
+    <input class="form-control mb-2" type="text" name="name" value="{{ lot.name }}" required>
+    <input class="form-control mb-2" type="text" name="address" value="{{ lot.address }}" required>
+    <input class="form-control mb-2" type="text" name="pincode" value="{{ lot.pincode }}" required> 
+    <input class="form-control mb-2" type="number" name="price" value="{{ lot.price }}" required>
+    <input class="form-control mb-2" type="number" name="max_spots" value="{{ lot.max_spots }}" required>
+    <button class="btn btn-primary" type="submit">Update</button>
+</form>
+<a id="btd" href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

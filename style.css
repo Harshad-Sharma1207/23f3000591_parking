@@ -1,0 +1,329 @@
+/* Button Styling */
+button.btn-primary, .btn-primary {
+    background-color: #00ffd8;
+    border: none;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button.btn-primary:hover, .btn-primary:hover {
+    transform: scale(1.05);
+    background-color: #00e6c0;
+    color: white;
+    box-shadow: 0 0 10px #00e6c0;
+}
+
+/* Contact Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/* General page background */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #2c3e50, #3498db);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+} 
+
+
+/* Welcome heading */
+.welcome-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000a0;
+    transition: all 0.4s ease;
+    margin-bottom: 1.5rem;
+}
+
+.welcome-heading:hover {
+    color: #2ce3cc;
+    transform: scale(1.08);
+    text-shadow: 4px 4px 8px rgba(0, 255, 255, 0.4);
+}
+
+/* Login/Register form styling */
+form {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Input fields */
+input.form-control {
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 8px;
+    border: none;
+    padding: 0.6rem;
+}
+
+input.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px #2ce3cc;
+    border: 1px solid #2ce3cc;
+}
+
+/* Buttons */
+button.btn-primary,
+button.btn-secondary {
+    background-color: #2ce3cc;
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+button.btn-primary:hover,
+button.btn-secondary:hover {
+    background-color: #1abc9c;
+    transform: scale(1.05);
+}
+
+/* Navbar */
+.navbar {
+    padding: 1rem 2rem;
+}
+
+.navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+.navbar .navbar-brand:hover {
+    color: #2ce3cc !important;
+    text-shadow: 0 0 8px #2ce3cc;
+}
+
+/* Flash messages */
+.alert {
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* Table style (for user/lots view) */
+.table {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.table th,
+.table td {
+    color: #2c3e50;
+}
+
+/* Responsive fix */
+@media (max-width: 600px) {
+    .welcome-heading {
+        font-size: 1.8rem;
+    }
+}
+
+/* Button Styling */
+button.btn-success, .btn-success {
+    background-color: #00ffd8;
+    border: none;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button.btn-success:hover, .btn-success:hover {
+    transform: scale(1.05);
+    background-color: #00e6c0;
+    color: white;
+    box-shadow: 0 0 10px #00e6c0;
+}
+
+
+/* Admin Dashboard */
+#cnl {
+    background-color: #00ffd8;
+    border: none;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#cnl:hover {
+    transform: scale(1.05);
+    background-color: #00e6c0;
+    color: white;
+    box-shadow: 0 0 10px #00e6c0;
+}
+
+#a1{
+    background-color: #19cae1;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}#a1:hover{
+    transform: scale(1.05);
+    background-color: #19cae1;
+    color: white;
+    box-shadow: 0 0 10px #19cae1;
+}
+#a2{
+    background-color: grey;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}#a2:hover{
+    transform: scale(1.05);
+    background-color: grey;
+    color: white;
+    box-shadow: 0 0 10px grey;
+}
+
+#edit{
+    background-color: #f2be02;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}#edit:hover{
+    transform: scale(1.05);
+    background-color: #f2be02;
+    color: white;
+    box-shadow: 0 0 10px #f2be02;
+}
+
+#delete{
+    background-color: #ed0202;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}#delete:hover{
+    transform: scale(1.05);
+    background-color: #ed0202;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#vst {
+    background-color: #00ffd8;
+    border: none;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#vst:hover {
+    transform: scale(1.05);
+    background-color: #00e6c0;
+    color: white;
+    box-shadow: 0 0 10px #00e6c0;
+}
+
+/* user_dashboard */
+#rlms{
+    background-color: red;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#rlms:hover{
+    transform: scale(1.05);
+    background-color: red;
+    color: #fff;
+    box-shadow: 0 0 10px red;
+}
+
+#vps{
+    background-color: #13b6f6;
+    border: none;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+#vps:hover{
+    transform: scale(1.05);
+    background-color: #13b6f6;
+    color: white;
+    box-shadow: 0 0 10px #13b6f6;
+}
+
+#mma{
+    background-color: #c9c90d;
+    border: none;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+#mma:hover {
+    transform: scale(1.05);
+    background-color: #c9c90d;
+    color: white;
+    box-shadow: 0 0 10px #c9c90d;
+}
+
+#dprh{
+    background-color: red;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#dprh:hover{
+    transform: scale(1.05);
+    background-color: red;
+    color: #fff;
+    box-shadow: 0 0 10px red;
+}
+
+/* Back to Dashboard */
+
+#btd{
+    background-color: grey;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+#btd:hover{
+    transform: scale(1.05);
+    background-color: grey;
+    color: black;
+    box-shadow: 0 0 10px grey;
+}
+
+/* release section */
+
+#rel{
+    background-color: #a90404;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}#rel:hover{
+    transform: scale(1.05);
+    background-color: #a90404;
+    color: #fff;
+    box-shadow: 0 0 10px #a90404;
+}
+
+/* change_password */
+#updp{
+    background-color: #e2e222;
+    border: none;
+    color: black;
+    transition: all 0.3s ease;
+}#updp:hover{
+    transform: scale(1.05);
+    background-color: #e2e222;
+    color: white;
+    box-shadow: 0 0 10px #e2e222;
+}

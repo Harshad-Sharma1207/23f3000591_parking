@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">{{ title }}</h2>
+
+{% if reservations %}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Lot ID</th>
+            <th>Spot ID</th>
+            <th>Parking Time</th>
+            <th>Leaving Time</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for res in reservations %}
+        <tr>
+            <td>{{ res.spot.lot_id }}</td>
+            <td>{{ res.spot_id }}</td>
+            <td>{{ res.parking_time }}</td>
+            <td>{{ res.leaving_time or 'Active' }}</td>
+            <td>
+                {% if res.leaving_time %}
+                    ₹{{ res.cost_per_unit }}
+                {% else %}
+                    —
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>You have no reservations yet.</p>
+{% endif %}
+<a id="btd" href="{{ url_for('user.user_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

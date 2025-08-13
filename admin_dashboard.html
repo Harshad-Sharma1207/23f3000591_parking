@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<h4>Balance: ₹{{ admin.balance }}</h4>
+
+<a id="cnl" class="btn btn-success mb-3" href="{{ url_for('admin.create_lot') }}">Create New Lot</a>
+<a id="a1" class="btn btn-info mb-3" href="{{ url_for('admin.view_users') }}">View All Users</a>
+
+
+<a id="a2" href="{{ url_for('admin.change_password') }}" class="btn btn-secondary mt-3">Change Password</a>
+
+{% for lot in lots %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{ lot.name }}</h5>
+        <p class="card-text">{{ lot.address }} - {{ lot.pincode }}</p>
+        <p>Price: ₹{{ lot.price }} | Spots: {{ lot.max_spots }}</p>
+        <p>{{ lot.occupied_count }} spots occupied out of {{ lot.max_spots }}</p>
+
+        <a id="edit" class="btn btn-warning" href="{{ url_for('admin.edit_lot', lot_id=lot.id) }}">Edit</a>
+        <a id="delete" class="btn btn-danger" href="{{ url_for('admin.delete_lot', lot_id=lot.id) }}">Delete</a>
+        <a id="vst" class="btn btn-primary" href="{{ url_for('admin.lot_status', lot_id=lot.id) }}">View Status</a>
+    </div>
+</div>
+{% endfor %}
+
+<hr>
+
+<!-- Show/Hide Reservations Toggle Button -->
+<button class="btn mb-3" style="background-color: black; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#recentReservations" aria-expanded="false" aria-controls="recentReservations">
+  Show/Hide Recent Reservations
+</button>
+
+<!-- Collapsible Section -->
+<div class="collapse" id="recentReservations">
+  <div class="card card-body">
+    <h3>Recent Reservations</h3>
+
+    <!-- Delete Reservation History Button -->
+    <form method="POST" action="{{ url_for('admin.delete_reservations') }}" onsubmit="return confirm('Are you sure you want to delete all reservation history?');">
+      <button type="submit" class="btn btn-danger mb-3">Delete All Reservation History</button>
+    </form>
+
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Contact</th>
+          <th>Vehicle Type</th>
+          <th>Vehicle Number</th>
+          <th>Lot</th>
+          <th>Spot</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in reservations %}
+        <tr>
+          <td>{{ r.name or r.reserved_by.username }}</td>
+          <td>{{ r.contact or 'N/A' }}</td>
+          <td>{{ r.vehicle_type or 'N/A' }}</td>
+          <td>{{ r.vehicle_number or 'N/A' }}</td>
+          <td>{% if r.spot and r.spot.lot %}{{ r.spot.lot.name }}{% else %}Unknown Lot{% endif %}</td>
+          <td>{% if r.spot %}{{ r.spot.id }}{% else %}N/A{% endif %}</td>
+          <td>{{ r.parking_time }}</td>
+          <td>{{ r.leaving_time or 'Ongoing' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

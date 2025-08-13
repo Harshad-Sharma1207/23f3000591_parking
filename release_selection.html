@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Select a Reservation to Release</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Lot</th>
+      <th>Spot ID</th>
+      <th>Start Time</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in reservations %}
+    <tr>
+      <td>{{ r.spot.lot.name }}</td>
+      <td>{{ r.spot.id }}</td>
+      <td>{{ r.parking_time }}</td>
+      <td>
+        <a id="rel" href="{{ url_for('user.release_specific_reservation', reservation_id=r.id) }}" class="btn btn-danger btn-sm">Release</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a id="btd" href="{{ url_for('user.user_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+{% endblock %}
